@@ -1,6 +1,8 @@
 #ifndef MyVector_h
 #define MyVector_h
 
+#include "Lettura.h"
+
 class MyVector{
     public:
     class Invalid {};
@@ -9,7 +11,7 @@ class MyVector{
     //costruttore
     MyVector(int s);
     //costruttore con initializer list
-    MyVector(std::initializer_list<double> lst);
+    MyVector(std::initializer_list<lettura[]> lst);
     //costruttore copia
     MyVector(const MyVector& a);
     //assegnamento copia
@@ -20,7 +22,6 @@ class MyVector{
     MyVector& operator=(MyVector&&);
     
     int size() const{ return sz; };
-    //int b_size() const {return buffer_sz; } //metodo implementato solo per testare la correttezza di reserve()
     double& operator[](int i);
     double operator[](int i) const;
     ~MyVector();
@@ -39,4 +40,4 @@ class MyVector{
     double *elem;
 };
 
-#endif //MyVector_h
+#endif // MyVector_h

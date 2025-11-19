@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "MyVector.h"
+
 constexpr int DEFAULT_SIZE{50};
 
 //costruttore di default
@@ -96,8 +97,8 @@ double MyVector::at(int n) const{
 
 void MyVector::push_back(double value){
     if(sz == buffer_sz){
-        buffer_sz = 1.5 * buffer_sz + 1;
-        double* p = new double[buffer_sz]; //il 1+ gestisce il caso in cui il vettore sia vuoto e buff_sz nulla
+        buffer_sz = 1.5 * buffer_sz + 1; //il 1+ gestisce il caso in cui il vettore sia vuoto e buff_sz nulla
+        double* p = new double[buffer_sz]; 
         std::copy(elem, elem + sz, p);
         delete[] elem;
         elem = p;
@@ -107,9 +108,6 @@ void MyVector::push_back(double value){
 }
 
 void MyVector::pop_back(){
-    //Nella documentazione viene indicato che in caso il vettore sia vuoto la funzione causa "undefined behavior".
-    //Siccome non vengono effettuate specifiche nel testo dell'esercizio e siccome questo è *My*Vector,
-    //ho deciso di farlo fallire silenziosamente in caso l'utente tentasse di eliminare un elemento da un vettore vuoto
     if(sz == 0){ return; }
     --sz;
 }
