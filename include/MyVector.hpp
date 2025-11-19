@@ -1,11 +1,3 @@
-/******************************************************************************************
-Implementare la classe MyVector vista nel laboratorio 4 rendendo generici gli elementi contenuti,
-il che significa sostituire il double con un tipo generico T utilizzando i template. Tutte le funzioni
-richieste nel laboratorio 4 devono essere aggiornate per tenere conto del template.
-È obbligatorio implementare tutte le funzioni membro esternamente alla classe, quindi le
-in-class definition sono vietate. È inoltre obbligatorio indicare prima i membri public, poi
-quelli private.
-******************************************************************************************/
 #ifndef vector_hpp
 #define vector_hpp
 

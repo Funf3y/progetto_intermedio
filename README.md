@@ -8,6 +8,8 @@ Giulia B.
 - Improntato main (verificato che includesse)
 - Interfaccia pubblica di InertialDriver (nel .h)
 - Completata interfaccia (in sincrono con le altre)
+- Aggiunti file MyVector con template
+- Gestione generale di commit e push
 
 Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)
