@@ -1,10 +1,20 @@
 #ifndef Misura_h
 #define Misura_h
 
+#include <iostream>
+
 #include "Lettura.h"
 
 class Misura{
     public:
+
+    //costruttori
+
+    Misura();
+
+    Misura(std::initializer_list<lettura> lst);
+
+    //copia e move?
 
     lettura& operator[](int n);
     const lettura& operator[] (int n) const;
@@ -20,5 +30,8 @@ class Misura{
     static const int NUM_LETTURE{17};
     lettura elem[NUM_LETTURE];
 };
+
+//operator<<
+std::ostream& operator<<(std::ostream& os, Misura m);
 
 #endif //Misura_h
