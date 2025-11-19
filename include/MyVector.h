@@ -1,17 +1,24 @@
-#ifndef MyVector_h
-#define MyVector_h
+/******************************************************************************************
+Implementare la classe MyVector vista nel laboratorio 4 rendendo generici gli elementi contenuti,
+il che significa sostituire il double con un tipo generico T utilizzando i template. Tutte le funzioni
+richieste nel laboratorio 4 devono essere aggiornate per tenere conto del template.
+È obbligatorio implementare tutte le funzioni membro esternamente alla classe, quindi le
+in-class definition sono vietate. È inoltre obbligatorio indicare prima i membri public, poi
+quelli private.
+******************************************************************************************/
+#ifndef vector_h
+#define vector_h
 
-#include "Lettura.h"
-
+template<typename T>
 class MyVector{
     public:
     class Invalid {};
     //costruttore di default
-    MyVector();
+    explicit MyVector();
     //costruttore
-    MyVector(int s);
+    explicit MyVector(int s);
     //costruttore con initializer list
-    MyVector(std::initializer_list<lettura[]> lst);
+    MyVector(std::initializer_list<double> lst);
     //costruttore copia
     MyVector(const MyVector& a);
     //assegnamento copia
@@ -21,15 +28,15 @@ class MyVector{
     //assegnamento move
     MyVector& operator=(MyVector&&);
     
-    int size() const{ return sz; };
-    double& operator[](int i);
-    double operator[](int i) const;
+    int size() const;
+    T& operator[](int i);
+    T operator[](int i) const;
     ~MyVector();
     
     //funzioni membro per la gestione elementi del vector
-    double& at(int n);
-    double at(int n) const;
-    void push_back(double value);
+    T& at(int n);
+    T at(int n) const;
+    void push_back(T value);
     void pop_back();
     void reserve(int n);
     
@@ -37,7 +44,8 @@ class MyVector{
     //inseriti valori di default
     int sz;
     int buffer_sz;
-    double *elem;
+    T *elem;
 };
 
-#endif // MyVector_h
+#include "MyVector.hpp"
+#endif 

@@ -31,8 +31,8 @@ class InertialDriver{
 
     private:
     //dati membro
-    MyVector buffer_;
-    const int BUFFER_DIM_{3}; //dimensione scelta arbitrariamente (per ora 3 per fare test)
+    MyVector buffer;
+    const int BUFFER_DIM{3}; //dimensione scelta arbitrariamente (per ora 3 per fare test)
     int front{0}; //indice dell'elemento più vecchio presente nel buffer
     int back{0}; //indice dell'elemento più nuovo presente nel buffer
 

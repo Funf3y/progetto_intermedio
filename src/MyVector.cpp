@@ -1,16 +1,17 @@
 #include <iostream>
 #include <stdexcept>
 #include "MyVector.h"
+#include "Lettura.h"
 
 constexpr int DEFAULT_SIZE{50};
 
 //costruttore di default
 MyVector::MyVector()
-:sz{0}, buffer_sz{DEFAULT_SIZE}, elem{new double[DEFAULT_SIZE]}{}
+:sz{0}, buffer_sz{DEFAULT_SIZE}, elem{new lettura[DEFAULT_SIZE]}{}
 
 //costruttore
 MyVector::MyVector(int s)
-:sz{s}, buffer_sz{s}, elem{new double[buffer_sz]}
+:sz{s}, buffer_sz{s}, elem{new lettura[buffer_sz]}
 {
     if(s < 0) { 
         throw Invalid(); 
@@ -21,22 +22,22 @@ MyVector::MyVector(int s)
 }
 
 //costruttore con inizializer list
-MyVector::MyVector(std::initializer_list<double> lst)
-: sz{(int) lst.size()}, buffer_sz{(int) lst.size()}, elem{new double[buffer_sz]}
+MyVector::MyVector(std::initializer_list<lettura[]> lst)
+: sz{(int) lst.size()}, buffer_sz{(int) lst.size()}, elem{new lettura[buffer_sz]}
 {
     std::copy(lst.begin(), lst.end(), elem);
 }
 
 //costruttore copia
 MyVector::MyVector(const MyVector& a)
-:sz{a.sz}, buffer_sz{a.buffer_sz}, elem{new double[buffer_sz]}
+:sz{a.sz}, buffer_sz{a.buffer_sz}, elem{new lettura[buffer_sz]}
 {
     std::copy(a.elem, a.elem + sz, elem);
 }
 
 //assegnamento copia
 MyVector& MyVector::operator=(const MyVector& a){
-    double* p = new double[a.buffer_sz];
+    lettura* p = new lettura[a.buffer_sz];
     std::copy(a.elem, a.elem + a.sz, p);
     delete[] elem;
     elem = p;
@@ -66,11 +67,11 @@ MyVector& MyVector::operator=(MyVector&& a)
     return *this;
 }
 
-double& MyVector::operator[](int i){
+lettura& MyVector::operator[](int i){
     return elem[i];
 }
 
-double MyVector::operator[](int i) const{
+lettura MyVector::operator[](int i) const{
     return elem[i];
 }
 
@@ -79,26 +80,26 @@ MyVector::~MyVector(){
     delete[] elem;
 }
 
-double& MyVector::at(int n){
+lettura& MyVector::at(int n){
     if(!(n < sz) || n < 0){ 
         throw std::out_of_range{"Out of range (index)"}; 
     }
-    double& ref = *(elem + n);
+    lettura& ref = *(elem + n);
     return ref;
 }
 
-double MyVector::at(int n) const{
+lettura MyVector::at(int n) const{
     if(!(n < sz) || n < 0){ 
         throw std::out_of_range{"Out of range (index)"}; 
     }
-    double& ref = *(elem + n);
+    lettura& ref = *(elem + n);
     return ref;
 }
 
-void MyVector::push_back(double value){
+void MyVector::push_back(lettura value){
     if(sz == buffer_sz){
         buffer_sz = 1.5 * buffer_sz + 1; //il 1+ gestisce il caso in cui il vettore sia vuoto e buff_sz nulla
-        double* p = new double[buffer_sz]; 
+        lettura* p = new lettura[buffer_sz]; 
         std::copy(elem, elem + sz, p);
         delete[] elem;
         elem = p;
@@ -117,7 +118,7 @@ void MyVector::reserve(int n){
         return;
     }
     buffer_sz = n;
-    double* p = new double[buffer_sz];
+    lettura* p = new lettura[buffer_sz];
     std::copy(elem, elem + sz, p);
     delete[] elem;
     elem = p;
