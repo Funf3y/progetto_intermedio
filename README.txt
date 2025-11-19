@@ -2,7 +2,7 @@ Giulia B.
 - Problemi tecnici ;-;
 - Check e condivisione teoria, supporto
 
-Sara G.
+🗝️☁️
 - Aggiunto MyVector dal lab04
 - Improntata classe InertialDriveri
 - Improntato main (verificato che includesse)
