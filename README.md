@@ -10,6 +10,8 @@ Giulia B.
 - Completata interfaccia (in sincrono con le altre)
 - Aggiunti file MyVector con template
 - Gestione generale di commit e push
+- Tentata risoluzione con std::array
+- Iniziato tentativo di risoluzione con una classe addizionale (misura)
 
 Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)

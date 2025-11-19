@@ -5,6 +5,7 @@
 
 #include "MyVector.h"
 #include "Lettura.h"
+#include "Misura.h"
 
 class InertialDriver{
     public:
@@ -33,8 +34,8 @@ class InertialDriver{
 
     private:
     //dati membro
-    static const int DIM_ARRAY {17}; //numero di letture di una misura
-    MyVector<std::array<lettura, DIM_ARRAY>> buffer; //buffer di misure
+    //static const int DIM_ARRAY {17}; //numero di letture di una misura
+    MyVector<Misura> buffer; //buffer di misure
     const int BUFFER_DIM{3}; //dimensione scelta arbitrariamente (per ora 3 per fare test)
     int front{0}; //indice dell'elemento più vecchio presente nel buffer
     int back{0}; //indice dell'elemento più nuovo presente nel buffer

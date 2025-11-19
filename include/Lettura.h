@@ -2,6 +2,9 @@
  * rappresenta una lettura delle 6 misurazioni (3 direzioni, velocità e accelerazione per ogni misura)
 **********/
 
+#ifndef lettura_h
+#define lettura_h
+
 struct lettura{
     // yaw
     double yaw_v; //velocity
@@ -16,3 +19,5 @@ struct lettura{
     double roll_a; 
      
 };
+
+#endif //lettura_h
