@@ -16,5 +16,3 @@ struct lettura{
     double roll_a; 
      
 }; 
-
-using Misure = lettura[17]; 
