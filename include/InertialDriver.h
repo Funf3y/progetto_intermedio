@@ -6,9 +6,12 @@
 #include "MyVector.h"
 #include "Lettura.h"
 
-
 class InertialDriver{
     public:
+
+    //costruttore di default
+
+    //costruttori con parametri
 
     //funzioni per accedere all'interfaccia
     
@@ -31,7 +34,7 @@ class InertialDriver{
     private:
     //dati membro
     static const int DIM_ARRAY {17}; //numero di letture di una misura
-    MyVector<lettura[DIM_ARRAY]> buffer; //buffer di misure
+    MyVector<std::array<lettura, DIM_ARRAY>> buffer; //buffer di misure
     const int BUFFER_DIM{3}; //dimensione scelta arbitrariamente (per ora 3 per fare test)
     int front{0}; //indice dell'elemento più vecchio presente nel buffer
     int back{0}; //indice dell'elemento più nuovo presente nel buffer

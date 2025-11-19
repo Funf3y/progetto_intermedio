@@ -4,7 +4,7 @@ Giulia B.
 
 🗝️☁️
 - Aggiunto MyVector dal lab04
-- Improntata classe InertialDriveri
+- Improntata classe InertialDriver
 - Improntato main (verificato che includesse)
 - Interfaccia pubblica di InertialDriver (nel .h)
 - Completata interfaccia (in sincrono con le altre)

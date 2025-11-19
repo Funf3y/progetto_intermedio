@@ -15,4 +15,4 @@ struct lettura{
     double roll_v; 
     double roll_a; 
      
-}; 
+};
