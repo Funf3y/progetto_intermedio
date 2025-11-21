@@ -32,7 +32,10 @@ class Misura{
     Lettura elem[NUM_LETTURE];
 };
 
-//operator<<
+//operator<< per Misura
 std::ostream& operator<<(std::ostream& os, Misura m);
+
+//operator <<  per Lettura
+std::ostream& operator<<(std::ostream& os, Lettura l);
 
 #endif //Misura_h

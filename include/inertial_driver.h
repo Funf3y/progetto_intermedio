@@ -43,6 +43,7 @@ class InertialDriver{
     const int BUFFER_DIM; //dimensione scelta arbitrariamente (per ora 3 per fare test)
     int front{0}; //indice dell'elemento più vecchio presente nel buffer
     int back{0}; //indice dell'elemento più nuovo presente nel buffer
+    
 
 };
 

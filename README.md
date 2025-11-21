@@ -3,11 +3,17 @@
 - **File**: tutto minuscolo, trattini bassi per separare le parole (snake_case)
 - **Classi** (e struct): prima lettera di ogni parola con la maiuscola, nessuno spazio, nessun trattino basso (CamelCase)
 
+# Policy adottate
+
+- **Costruttori classe Misura: tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
+
 # Attività individuali
 
 Giulia B.
-- Problemi tecnici ;-;
-- Check e condivisione teoria, supporto
+- Check e condivisione teoria, supporto (iniziali problemi tecnici)
+- Implementati operatori di accesso per lettura e scrittura (misura.cpp)
+- Implementata funzione clear_buffer
+- Costruttore di default di inertial_driver
 
 🗝️☁️
 - Aggiunto MyVector dal lab04
@@ -22,11 +28,20 @@ Giulia B.
 - Rinominato file
 - Improntato costruttori
 - Copia (Misura)
+- operator<< (Misura)
+- Sistemazione coesione stile
+- Test sul main
 
 Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)
 - adattamento di MyVector alle nuove esigenze
 - test di scrittura e stampa componente della struct lettura
 - costruttori di Misura 
+- test di misura 
+
+# TODO
+
+- Bloccare esplicitamente copia e move non effettuate (Misura)
+- Classe InertialDriver
 
 # Problemi riscontrati e non risolti (eventualmente)
