@@ -1,10 +1,12 @@
-#include "../include/InertialDriver.h"
-#include "../include/Lettura.h"
 #include <iostream>
+
+#include "../include/inertial_driver.h"
+#include "../include/misura.h"
+#include "../include/lettura.h"
 
 //push_back
 //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
-void InertialDriver::push_back(lettura misura[]){
+void InertialDriver::push_back(lettura Misura[]){
 
 }
 

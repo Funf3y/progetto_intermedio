@@ -1,8 +1,6 @@
 #ifndef vector_h
 #define vector_h
 
-#include "my_vector.hpp"
-
 template<typename T>
 class MyVector{
     public:
