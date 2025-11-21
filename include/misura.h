@@ -8,24 +8,17 @@
 class Misura{
     public:
 
+    //per poter lanciare errori
+    class Invalid {};
+
     //costruttori
 
     Misura();
 
-    //conversione esplicita tra array stile C di letture e `misura`
-    Misura(Lettura mis[]);
-
     Misura(std::initializer_list<Lettura> lst);
 
-    /*copia e move*/
-
-    Misura(const Misura& a);
-    //assegnamento copia
-    Misura& operator=(const Misura& a);
-    //costruttore move
-    Misura(Misura&& a);
-    //assegnamento move
-    Misura& operator=(Misura&&);
+    //costruttore copia
+    Misura(const Misura& m);
 
     //l'operator[] emula il comportamento degli array stile C
     Lettura& operator[](int n);

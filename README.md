@@ -21,6 +21,7 @@ Giulia B.
 - Iniziato tentativo di risoluzione con una classe addizionale (misura)
 - Rinominato file
 - Improntato costruttori
+- Copia (Misura)
 
 Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)

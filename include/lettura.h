@@ -5,7 +5,7 @@
 #ifndef lettura_h
 #define lettura_h
 
-struct lettura{
+struct Lettura{
     // yaw
     double yaw_v; //velocity
     double yaw_a; //acceleration

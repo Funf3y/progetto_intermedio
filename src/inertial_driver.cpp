@@ -6,7 +6,7 @@
 
 //push_back
 //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
-void InertialDriver::push_back(lettura Misura[]){
+void InertialDriver::push_back(Lettura Misura[]){
 
 }
 
@@ -25,6 +25,6 @@ void InertialDriver::clear_buffer(){
 
 //get_reading
 //accetta un numero tra 0 e 16 e ritorna la corrispondente lettura della misura più recente, senza cancellarla dal buffer
-lettura get_reading(int index){
+Lettura get_reading(int index){
     
 }
