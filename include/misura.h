@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "ettura.h"
+#include "lettura.h"
 
 class misura{
     public:
@@ -12,7 +12,7 @@ class misura{
 
     misura();
 
-    misura(std::initializer_list<lettura> lst); //misura m = {l1, l2, l3, l4}
+    misura(std::initializer_list<lettura> lst);
 
     //copia e move?
 

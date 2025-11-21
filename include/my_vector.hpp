@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <stdexcept>
+
+#include "my_vector.h"
+
 constexpr int DEFAULT_SIZE{50};
 
 //costruttore di default

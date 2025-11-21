@@ -1,6 +1,7 @@
 #include <iostream>
-#include "../include/MyVector.h"
-#include "../include/InertialDriver.h"
+
+#include "../include/my_vector.h"
+#include "../include/inertial_driver.h"
 
 int main(){
     lettura l1; 
