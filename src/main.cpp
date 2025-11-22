@@ -60,7 +60,8 @@ int main(){
 
     /*Operator [] in lettura*/
     //Permette di testare:
-    //
+    //- operator [] in lettura 
+    //- operator << con lettura
     std::cout << "Terza lettura in m1" << std::endl; 
     Lettura l3 = m1[3];
     std::cout << l3;
@@ -69,7 +70,8 @@ int main(){
 
     /*Operator [] in scrittura  */
     //Permette di testare:
-    //
+    //- operator [] in scrittura 
+    //- operator << con misura
     std::cout << "La quarta lettura in m1 viene scritta" << std::endl; 
     Lettura l4; 
     l4.pitch_v = 27.27;
@@ -82,6 +84,17 @@ int main(){
     std::cout << m1 << std::endl;    
     std::cout << "-------------------------------------------------------------------------------------" << std::endl;
 
+    std::cout << "----------------------------TEST INERTIAL DRIVER-------------------------------------" << std::endl;
+    /*test del costruttore di defailt di initial driver*/
+    //Permette di testare:
+    //- Costruttore di default initial driver
+    InertialDriver inert_driver_0; 
+
+    /*test del push_back di inertial driver*/
+    //Permette di testare:
+    //- is_empty di inertrial driver 
+    //- increment di inertial driver
+    inert_driver_0.push_back(m1);
 
     /*test di inizializzazione con initializer list di dimensione > 17*/
     //Permette di testare:
@@ -98,5 +111,9 @@ int main(){
     }
 
     std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "----------------------------TEST INERTIAL DRIVER-------------------------------------" << std::endl;
+
+
+
 
 }

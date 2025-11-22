@@ -10,6 +10,7 @@
 class InertialDriver{
     public:
 
+
     //costruttore di default
     //di default la dimensione viene scelta dal programmatore
     InertialDriver();
@@ -19,11 +20,13 @@ class InertialDriver{
     explicit InertialDriver(int buffer_dim);
 
 
+    ~InertialDriver();
+    
     /*funzioni per accedere all'interfaccia*/
     
     //push_back
     //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
-    void push_back(Lettura misura[]);
+    void push_back(Misura m);
 
     //pop_front
     //fornisce in output un array stile C contenente la misura più vecchia e la rimuove dal buffer
@@ -33,6 +36,15 @@ class InertialDriver{
     //elimina (senza restituirle) tutte le misure salvate
     void clear_buffer();
 
+    //verifica se il buffer è vuoto 
+    bool is_empty(); 
+
+    //verifica se il buffer è pieno => devo iniziare a sovrascrivere 
+    bool is_full(); 
+
+    //incrementa gli indici 
+    int increment(int index);
+
     //get_reading
     //accetta un numero tra 0 e 16 e ritorna la corrispondente lettura della misura più recente, senza cancellarla dal buffer
     //lettura* get_reading(int index); //da risolvere
@@ -40,7 +52,7 @@ class InertialDriver{
     private:
     //dati membro
     MyVector<Misura> buffer; //buffer di misure
-    const int BUFFER_DIM; //dimensione scelta arbitrariamente (per ora 3 per fare test)
+    const int BUFFER_DIM{3}; //dimensione scelta arbitrariamente (per ora 3 per fare test)
     int front{0}; //indice dell'elemento più vecchio presente nel buffer
     int back{0}; //indice dell'elemento più nuovo presente nel buffer
     

@@ -36,14 +36,21 @@ Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)
 - adattamento di MyVector alle nuove esigenze
 - test di scrittura e stampa componente della struct lettura
-- costruttori di Misura 
+- costruttore di default di Misura 
+- costruttore con initializer list di Misura 
 - test di misura 
+NUOVE - 22/11
+- test del costruttore di default di inertial_driver
+- correzione costruttore di default 
+- push_back() di inertial_driver 
+- aggiunta is_empty e is_full in inertial_driver
+- aggiunta di increment in inertial_driver
 
-
-PROVAAAAA GITTTT
 # TODO
 
 - Bloccare esplicitamente copia e move non effettuate (Misura)
 - Classe InertialDriver
+- test delle varie eccezioni lanciate (es. [] con indice fuori dal range)
+- sistemare alcuni commenti per le funzioni di inertial driver --> Zane: "ho scritto in velocità intanto per farvi capire cosa volevo fare"
 
 # Problemi riscontrati e non risolti (eventualmente)

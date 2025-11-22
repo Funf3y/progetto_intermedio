@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "lettura.h"
+//#include "misura.h"
 
 class Misura{
     public:
