@@ -4,13 +4,22 @@
 #include "../include/misura.h"
 #include "../include/lettura.h"
 
+/*COSTRUTTORI*/
+
 //costruttore di default
 InertialDriver::InertialDriver() 
 : buffer(BUFFER_DIM), front{0}, back{0} {}
 
+//costruttore con dimensione del buffer scelta dall'utente 
+InertialDriver::InertialDriver(int buffer_dim)
+: buffer(buffer_dim), front{0}, back{0} {}
+
+//TODO: pensa se aggiungere copia e move
+
+//distruttore
+//TODO
 InertialDriver::~InertialDriver(){}
 
-//is_empty
 bool InertialDriver::is_empty(){
     if(front == back){
         return true; 
@@ -18,57 +27,82 @@ bool InertialDriver::is_empty(){
     return false; 
 }
 
-//is_full
 bool InertialDriver::is_full(){
-    if(increment(back) == front){
+    if(increment(back, BUFFER_DIM) == front){
         return true; 
     }
     return false; 
 }
 
-//incrementa un indice (front o back) di uno 
-//se raggiunge la fine dello "spazio" ri-inizia il giro 
-int InertialDriver::increment(int index){
-    return (index +1)%BUFFER_DIM;
+int InertialDriver::size(){
+    if(back < front){
+        return (BUFFER_DIM - front) + back + 1;
+    }
+    return (back-front);
 }
 
-//push_back
-//accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
-/*void InertialDriver::push_back(Misura m){
-    
-    //per debug --> poi si può togliere 
-    if(is_empty()){
-        buffer.push_back(m);
-        increment(back); 
-        
-        std::cout << "era vuoto";
+//TODO: se avanza tempo, implementa per bene la stampa dell'intero buffer
+/*void stampa(InertialDriver indr){
+    if(back < front){
+
     }
-    buffer.push_back(m);
-    increment(back);
-
-    if(is_full()){
-        //NOTA X SG E GB
-        //non saprei come scrivere 
-
+    else{
+        for(int i = front; indr.size(); ++i){
+            std::cout << "nasdkfjh";
+        }
     }
 }*/
 
-//pop_front
+//incrementa un indice (front o back) di uno 
+//se raggiunge la fine dello "spazio" ricomincia il giro 
+int increment(int index, int buffer_dim){
+    return (index + 1) % buffer_dim;
+}
+
+Misura InertialDriver::getBack(){
+    return buffer[back];
+}
+
+//accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
+void InertialDriver::push_back(Misura m){
+    if(is_full()){
+        //se il buffer è pieno -> sovrascrivo la misura più vecchia 
+        buffer[front] = m; //sovrascrittura del front (misura più vecchia)
+        back = increment(back, BUFFER_DIM); //incremento back -> va nella pos del vecchio front (ultima misura inserita)
+        front = increment(front, BUFFER_DIM); //incremento front -> va nella nuova misura più vecchia 
+
+    }else{
+        //std::cout << "else di InertialDriver::push:back" << std::endl;
+        //inserimento normale 
+        back = increment(back, BUFFER_DIM); 
+        buffer[back] = m; 
+    }
+
+}
+
 //fornisce in output un array stile C contenente la misura più vecchia e la rimuove dal buffer
-///lettura* InertialDriver::pop_front(){ //da risolvere in un secondo momento
+Misura InertialDriver::pop_front(){
+    if(is_empty()){
+        throw Invalid(); //non è possibile rimuovere un elemento se è vuoto
+    }
 
-//}
+    Misura m = buffer[front];
+    front = increment(front, BUFFER_DIM); //rimozione misura più vecchia
+    return m;
+}    
 
-
-//clear_buffer
 //elimina (senza restituirle) tutte le misure salvate
 void InertialDriver::clear_buffer(){
     front = 0;
     back = 0;
 }
 
-//get_reading
 //accetta un numero tra 0 e 16 e ritorna la corrispondente lettura della misura più recente, senza cancellarla dal buffer
-/*Lettura get_reading(int index){
-    
-}*/
+Lettura InertialDriver::get_reading(int index){
+    Lettura l;
+    return l;
+}
+
+std::ostream& operator<<(std::ostream& os, InertialDriver indr){
+    return os << indr.getBack();
+}

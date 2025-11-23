@@ -31,6 +31,12 @@ Giulia B.
 - operator<< (Misura)
 - Sistemazione coesione stile
 - Test sul main
+- Modificato file perché non usino più i template
+- [Sara aggiungi qui pls]
+- Funzione size (Inertial Driver)
+- scrittura del pop_front in inertial driver 
+- operator << per inertial driver 
+- getBack() (InertialDriver)
 
 Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)
@@ -39,18 +45,26 @@ Sara Z.
 - costruttore di default di Misura 
 - costruttore con initializer list di Misura 
 - test di misura 
-NUOVE - 22/11
 - test del costruttore di default di inertial_driver
 - correzione costruttore di default 
 - push_back() di inertial_driver 
 - aggiunta is_empty e is_full in inertial_driver
 - aggiunta di increment in inertial_driver
+- Modificato file perché non usino più i template
+- scrittura del push_back in inertial driver
+- size() (InertialDriver)
 
 # TODO
 
 - Bloccare esplicitamente copia e move non effettuate (Misura)
 - Classe InertialDriver
-- test delle varie eccezioni lanciate (es. [] con indice fuori dal range)
-- sistemare alcuni commenti per le funzioni di inertial driver --> Zane: "ho scritto in velocità intanto per farvi capire cosa volevo fare"
+- Test delle varie eccezioni lanciate (es. [] con indice fuori dal range)
+- Sistemare alcuni commenti per le funzioni di inertial driver --> Zane: "ho scritto in velocità intanto per farvi capire cosa volevo fare"
+- Scegliere se aggiungere copia e move
+- ULTIME 
+    - SISTEMARE I COMMENTI 
+    - Sistemare stampa delle spiegazioni dei test sul main
+    - CONFRONTARE CODICE CON SPECIFICHE E CONVENZIONI (SLIDE) PER VEDERE SE E' TUTTO OK E CONSEGNABILE
+
 
 # Problemi riscontrati e non risolti (eventualmente)

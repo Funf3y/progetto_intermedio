@@ -21,6 +21,15 @@ class Misura{
     //costruttore copia
     Misura(const Misura& m);
 
+    //assegnamento copia
+    Misura& operator=(const Misura& m);
+
+    //costruttore move
+    Misura(Misura&& m);
+
+    //assegnamento move
+    Misura& operator=(Misura&& m);
+
     //l'operator[] emula il comportamento degli array stile C
     Lettura& operator[](int n);
     const Lettura& operator[] (int n) const;
@@ -29,7 +38,7 @@ class Misura{
     int size() const { return NUM_LETTURE; }
 
     private:
-    static const int NUM_LETTURE{17};
+    static const int NUM_LETTURE {17};
     Lettura elem[NUM_LETTURE];
 };
 

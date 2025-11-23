@@ -56,6 +56,30 @@ Misura::Misura(const Misura& m){
     }
 }
 
+//assegnamento copia
+Misura& Misura::operator=(const Misura& m){
+    for(int i = 0; i < NUM_LETTURE; ++i){
+        elem[i] = m.elem[i];
+    }
+
+    return *this;
+}
+
+//costruttore move
+Misura::Misura(Misura&& m){
+    for(int i = 0; i < NUM_LETTURE; ++i){
+        elem[i] = m.elem[i];
+    }
+}
+
+//assegnamento move
+Misura& Misura::operator=(Misura&& m){
+    for(int i = 0; i < NUM_LETTURE; ++i){
+        elem[i] = m.elem[i];
+    }
+    return *this;
+}
+
 //operatore di accesso per scrittura
 Lettura& Misura::operator[] (int n)
 {
