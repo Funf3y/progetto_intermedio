@@ -51,7 +51,7 @@ class InertialDriver{
 
     private:
     //dati membro
-    MyVector<Misura> buffer; //buffer di misure
+    MyVector buffer; //buffer di misure
     const int BUFFER_DIM{3}; //dimensione scelta arbitrariamente (per ora 3 per fare test)
     int front{0}; //indice dell'elemento più vecchio presente nel buffer
     int back{0}; //indice dell'elemento più nuovo presente nel buffer

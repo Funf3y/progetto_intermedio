@@ -1,7 +1,8 @@
 #ifndef vector_h
 #define vector_h
 
-template<typename T>
+#include "../include/misura.h"
+
 class MyVector{
     public:
     class Invalid {};
@@ -10,7 +11,7 @@ class MyVector{
     //costruttore
     explicit MyVector(int s);
     //costruttore con initializer list
-    MyVector(std::initializer_list<T> lst);
+    MyVector(std::initializer_list<Misura> lst);
     //costruttore copia
     MyVector(const MyVector& a);
     //assegnamento copia
@@ -21,14 +22,14 @@ class MyVector{
     MyVector& operator=(MyVector&&);
     
     int size() const;
-    T& operator[](int i);
-    T operator[](int i) const;
+    Misura& operator[](int i);
+    Misura operator[](int i) const;
     ~MyVector();
     
     //funzioni membro per la gestione elementi del vector
-    T& at(int n);
-    T at(int n) const;
-    void push_back(T value);
+    Misura& at(int n);
+    Misura at(int n) const;
+    void push_back(Misura value);
     void pop_back();
     void reserve(int n);
     
@@ -36,7 +37,7 @@ class MyVector{
     //inseriti valori di default
     int sz;
     int buffer_sz;
-    T *elem;
+    Misura *elem;
 };
 
-#endif 
+#endif
