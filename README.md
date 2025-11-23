@@ -74,4 +74,6 @@ Sara Z.
     - CONFRONTARE CODICE CON SPECIFICHE E CONVENZIONI (SLIDE) PER VEDERE SE E' TUTTO OK E CONSEGNABILE
 
 
-# Problemi riscontrati e non risolti (eventualmente)
+# Problemi riscontrati e non risolti
+
+- Costruttore di default di Inertial Driver inizializza con un buffer vuoto (invece della dimensione arbitraria decisa da noi)
