@@ -48,7 +48,7 @@ int InertialDriver::size(){
     }
     else{
         for(int i = front; indr.size(); ++i){
-            std::cout << "nasdkfjh";
+            std::cout << "";
         }
     }
 }*/
@@ -108,8 +108,12 @@ void InertialDriver::clear_buffer(){
 //accetta un numero tra 0 e 16 e ritorna la corrispondente lettura della misura più recente, senza cancellarla dal buffer
 Lettura InertialDriver::get_reading(int index){
     Misura m;
-    if(is_empty() || (index < 0 || index >= m.size())){
-        throw Invalid(); //non è possibile leggere un elemento se è vuoto o non nell'intervallo [0,16]
+    if(is_empty()){
+        throw Invalid(); //non è possibile leggere un elemento se è vuoto
+    }
+
+    if(index < 0 || index >= m.size()){
+        throw std::out_of_range ("Misura fuori dal range (deve essere compresa tra 0 e 16)");
     }
 
     m = buffer[back];

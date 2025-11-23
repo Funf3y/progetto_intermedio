@@ -9,7 +9,7 @@ int main(){
 
     /*****TEST*****/
 
-    std::cout << "0: per Misura e Lettura\n1: per Inertial Driver" <<std::endl;
+    std::cout << "0: per Misura e Lettura\n1: per Inertial Driver\n2: per conversione da array" <<std::endl;
     int scelta {0};
 
     std::cin >> scelta;
@@ -156,10 +156,39 @@ int main(){
         //- stampa di misura
         //Misura mis_rimossa = inert_driver_1.pop_front();
         std::cout << "Stampa elemento appena rimosso:" << std::endl << inert_driver_1.pop_front() << std::endl;
+        }
+    else if(scelta == 2){
+        Lettura l1; 
+        l1.pitch_v = 12.4;
+        l1.pitch_a = 78;
+        l1.roll_v = 0.7; 
+        l1.roll_a = 90; 
+        l1.yaw_v = 12.0;
+        l1.yaw_a = 20;
+
+        Lettura array17 [17] = {l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1};
+        Misura m = array17;
+        std::cout << "STAMPA MISURA DA CONVERSIONE CON ARRAY\n" << m << std::endl;
 
         std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
-        }
+
+        Lettura array_lungo [18] = {l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1};
+        m = array_lungo;
+        std::cout << "STAMPA MISURA DA CONVERSIONE CON ARRAY (più grande del previsto)\n" << m << std::endl;
+
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+        Lettura array_corto [16] = {l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1, l1};
+        m = array_corto;
+        std::cout << "STAMPA MISURA DA CONVERSIONE CON ARRAY (più piccolo del previsto)\n" << m << std::endl;
+
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+        InertialDriver indr {5};
+        indr.push_back(m);
+        std::cout << "STAMPA INERTIAL DRIVER DOPO INSERIMENTO DI ARRAY STILE C DI LETTURE (non di Misura)\n" << m << std::endl;
+    }
     else{
-        std::cout << "Ciaone" << std::endl;
+        std::cout << "Termino il programma." << std::endl;
     }
 }

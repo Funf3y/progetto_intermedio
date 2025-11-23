@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include "lettura.h"
-//#include "misura.h"
 
 class Misura{
     public:
@@ -17,6 +16,9 @@ class Misura{
     Misura();
 
     Misura(std::initializer_list<Lettura> lst);
+
+    //conversione da array di int a Misura
+    Misura(Lettura* m);
 
     //costruttore copia
     Misura(const Misura& m);

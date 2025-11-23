@@ -49,6 +49,13 @@ Misura::Misura(std::initializer_list<Lettura> lst){
     }
 }
 
+//costruttore per conversione da array di letture a Misura
+Misura::Misura(Lettura* m){
+    for(int i = 0; i < NUM_LETTURE; ++i){
+        elem[i] = m[i];
+    }
+}
+
 //costruttore copia
 Misura::Misura(const Misura& m){
     for(int i = 0; i < NUM_LETTURE; ++i){

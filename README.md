@@ -1,11 +1,14 @@
 # Convenzioni nomi
 
-- **File**: tutto minuscolo, trattini bassi per separare le parole (snake_case)
-- **Classi** (e struct): prima lettera di ogni parola con la maiuscola, nessuno spazio, nessun trattino basso (CamelCase)
+- **File, variabili, dati e funzioni membro**: Tutto minuscolo, trattini bassi per separare le parole (snake_case)
+- **Classi** (e struct): Prima lettera di ogni parola con la maiuscola, nessuno spazio, nessun trattino basso (CamelCase)
+- **Costanti**: Tutto maiuscolo, parole separate da un trattino basso.
 
 # Policy adottate
 
-- **Costruttori classe Misura**: tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
+- **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
+- **Costruttori classe Inertial Driver**: Se non viene fornito alcun parametro, la dimensione di default sarà 20. Se fornito un valore intero, verrà usato come dimensione del buffer da creare.
+- **Conversione da array stile C di Letture a Misura**: Se fornito un array stile C di Letture di dimensione >= 17, allora i primi 17 elementi verranno usati per costruire la misura; se fornito un array di dimensione insufficiente, i valori mancanti saranno garbage. 
 
 # Attività individuali
 
@@ -32,13 +35,14 @@ Giulia B.
 - Sistemazione coesione stile
 - Test sul main
 - Modificato file perché non usino più i template
-- [Sara aggiungi qui pls]
 - Funzione size (Inertial Driver)
-- scrittura del pop_front in inertial driver 
+- Scrittura del pop_front in inertial driver 
 - operator << per inertial driver 
 - getBack() (InertialDriver)
 - Correzione gestione indici buffer circolare
 - getReader() in Inertial driver
+- Conversione da array (stile C) di Lettura a Misura
+- Test conversione da array di Lettura a Misura
 
 
 Sara Z.
