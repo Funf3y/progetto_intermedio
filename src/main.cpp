@@ -9,10 +9,10 @@ int main(){
 
     /*****TEST*****/
 
-    std::cout << "0: per Misura\n1: per Inertial Driver" <<std::endl;
-    int scelta {1};
+    std::cout << "0: per Misura e Lettura\n1: per Inertial Driver" <<std::endl;
+    int scelta {0};
 
-    //std::cin >> scelta;
+    std::cin >> scelta;
 
     if(scelta == 0){
         std::cout << "**************************************** TEST MISURA E LETTURA ****************************************" << std::endl;
@@ -25,7 +25,7 @@ int main(){
         std::cout << "STAMPA COSTRUTTORE DEFAULT" << std::endl;
         std::cout << m1 << std::endl;
 
-        std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
         /*Costruttore con initializer list*/
         //Permette di testare:
@@ -53,7 +53,7 @@ int main(){
         std::cout << "STAMPA COSTRUTTORE CON INITIALIZER" << std::endl;
         std::cout << m_init_1 << std::endl;
 
-        std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
         /*Copia di una misura in un'altra*/
         //Permette di testare:
@@ -64,23 +64,23 @@ int main(){
         std::cout << "PROVA DELLA COPIA" << std::endl;
         std::cout << m1 << std::endl;
 
-        std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
         /*Operator [] in lettura*/
         //Permette di testare:
         //- operator [] in lettura 
         //- operator << con lettura
-        std::cout << "LETTURA CON []" << std::endl; 
+        std::cout << "LETTURA CON [3]" << std::endl; 
         Lettura l3 = m1[3];
         std::cout << l3;
         
-        std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
         /*Operator [] in scrittura  */
         //Permette di testare:
         //- operator [] in scrittura 
         //- operator << con misura
-        std::cout << "LETTURA E SCRITTURA CON []" << std::endl; 
+        std::cout << "LETTURA E SCRITTURA CON [4]" << std::endl; 
         Lettura l4; 
         l4.pitch_v = 27.27;
         l4.pitch_a = 27.27;
@@ -90,7 +90,7 @@ int main(){
         l4.yaw_a = 27.27;
         m1[4] = l4; 
         std::cout << m1 << std::endl;    
-        std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
         /*inizializzazione con initializer list di dimensione > 17*/
         //Permette di testare:
@@ -98,6 +98,8 @@ int main(){
         //- operator[]
         //- operator<<
         //- Funzione size() di Misura
+
+        std::cout << "INIZIALIZZAZIONE CON INITIALIZER LIST TROPPO GRANDE (catch dell'errore)" << std::endl;
         try{
             std::initializer_list<Lettura> prove_initializer  = {l1, l2, l1, l2, l1, l1, l1, l1, l1, l1, l2, l2, l2, l2, l2, l2, l2, l2};
             Misura m_init {prove_initializer};
@@ -131,16 +133,18 @@ int main(){
         //- Costruttore di default initial driver
         InertialDriver inert_driver_0; 
 
+        InertialDriver inert_driver_1 {5};
+
         /*test del push_back di inertial driver*/
         //Permette di testare:
         //- is_full di inertrial driver
         //- increment di inertial driver
         //- operator<<
-        //inert_driver_0.push_back(m1);
+        inert_driver_1.push_back(m1);
         std::cout << "PUSH BACK DI INERTIAL DRIVER" << std::endl;
-        std::cout << "Stampa elemento appena inserito:" << std::endl << inert_driver_0 << std::endl;
+        std::cout << "Stampa elemento appena inserito:" << std::endl << inert_driver_1 << std::endl;
 
-        std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
         /*test pop_front*/
         //Permette di testare:
@@ -150,12 +154,13 @@ int main(){
         //- operator[] (myVector)
         //- lancio eccezione Invalid
         //- stampa di misura
-        //Misura mis_rimossa = inert_driver_0.pop_front();
-        //std::cout << mis_rimossa << std::endl;
+        //Misura mis_rimossa = inert_driver_1.pop_front();
+        std::cout << "Stampa elemento appena rimosso:" << std::endl << inert_driver_1.pop_front() << std::endl;
 
-        std::cout << "-------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
         }
     else{
+        //int array[5] = new int{5};
         std::cout << "Ciaone" << std::endl;
     }
 }

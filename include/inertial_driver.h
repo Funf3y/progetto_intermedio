@@ -14,6 +14,7 @@ class InertialDriver{
 
     //costruttore di default
     //di default la dimensione viene scelta dal programmatore
+    //TODO: non va
     InertialDriver();
 
     //costruttore con parametri
@@ -53,7 +54,7 @@ class InertialDriver{
     int size();
 
     /*getter*/
-    Misura getBack();
+    Misura get_back();
 
     private:
     //dati membro

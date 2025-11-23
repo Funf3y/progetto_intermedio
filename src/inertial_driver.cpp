@@ -12,7 +12,7 @@ InertialDriver::InertialDriver()
 
 //costruttore con dimensione del buffer scelta dall'utente 
 InertialDriver::InertialDriver(int buffer_dim)
-: buffer(buffer_dim), front{0}, back{0} {}
+: BUFFER_DIM {buffer_dim}, buffer(buffer_dim), front{0}, back{0} {}
 
 //TODO: pensa se aggiungere copia e move
 
@@ -59,12 +59,16 @@ int increment(int index, int buffer_dim){
     return (index + 1) % buffer_dim;
 }
 
-Misura InertialDriver::getBack(){
-    return buffer[back];
+Misura InertialDriver::get_back(){
+    int index = (back - 1) % BUFFER_DIM;
+    return buffer[index];
 }
 
 //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
 void InertialDriver::push_back(Misura m){
+    
+    //std::cout << "front prima: " << front <<"; back prima: " << back << std::endl;
+    
     if(is_full()){
         //se il buffer è pieno -> sovrascrivo la misura più vecchia 
         buffer[front] = m; //sovrascrittura del front (misura più vecchia)
@@ -73,10 +77,12 @@ void InertialDriver::push_back(Misura m){
 
     }else{
         //std::cout << "else di InertialDriver::push:back" << std::endl;
-        //inserimento normale 
-        back = increment(back, BUFFER_DIM); 
+        //inserimento normale  
         buffer[back] = m; 
+        back = increment(back, BUFFER_DIM);
     }
+
+    //std::cout << "front dopo: " << front <<"; back dopo: " << back << std::endl;
 
 }
 
@@ -87,6 +93,8 @@ Misura InertialDriver::pop_front(){
     }
 
     Misura m = buffer[front];
+    //std::cout << "----> PROVA COUT DENTRO POP_FRONT\n" << buffer[front] << std::endl; 
+
     front = increment(front, BUFFER_DIM); //rimozione misura più vecchia
     return m;
 }    
@@ -99,10 +107,18 @@ void InertialDriver::clear_buffer(){
 
 //accetta un numero tra 0 e 16 e ritorna la corrispondente lettura della misura più recente, senza cancellarla dal buffer
 Lettura InertialDriver::get_reading(int index){
-    Lettura l;
+    Misura m;
+    if(is_empty() || (index < 0 || index >= m.size())){
+        throw Invalid(); //non è possibile leggere un elemento se è vuoto o non nell'intervallo [0,16]
+    }
+
+    m = buffer[back];
+    
+    Lettura l = m[index];
+
     return l;
 }
 
 std::ostream& operator<<(std::ostream& os, InertialDriver indr){
-    return os << indr.getBack();
+    return os << indr.get_back();
 }

@@ -37,6 +37,9 @@ Giulia B.
 - scrittura del pop_front in inertial driver 
 - operator << per inertial driver 
 - getBack() (InertialDriver)
+- Correzione gestione indici buffer circolare
+- getReader() in Inertial driver
+
 
 Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)
@@ -53,14 +56,18 @@ Sara Z.
 - Modificato file perché non usino più i template
 - scrittura del push_back in inertial driver
 - size() (InertialDriver)
+- Correzione gestione indici buffer circolare
+- getReader() in Inertial Driver
 
 # TODO
 
-- Bloccare esplicitamente copia e move non effettuate (Misura)
-- Classe InertialDriver
+- Sistemare costruttore di default di Inertial Driver
+- Copia e move Inertial Driver
+- Distruttore di Inertial Driver
+- TEST DI GETREADER (poi il resto delle funzioni di inertial driver)
 - Test delle varie eccezioni lanciate (es. [] con indice fuori dal range)
+- Test delle funzioni Inerial Driver
 - Sistemare alcuni commenti per le funzioni di inertial driver --> Zane: "ho scritto in velocità intanto per farvi capire cosa volevo fare"
-- Scegliere se aggiungere copia e move
 - ULTIME 
     - SISTEMARE I COMMENTI 
     - Sistemare stampa delle spiegazioni dei test sul main
