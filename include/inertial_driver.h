@@ -19,14 +19,14 @@ class InertialDriver{
     //dimensione del buffer decisa dall'utente
     explicit InertialDriver(int buffer_dim);
 
-
+    //distruttore
     ~InertialDriver();
     
     /*funzioni per accedere all'interfaccia*/
     
     //push_back
     //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
-    void push_back(Misura m);
+    //void push_back(Misura m);
 
     //pop_front
     //fornisce in output un array stile C contenente la misura più vecchia e la rimuove dal buffer

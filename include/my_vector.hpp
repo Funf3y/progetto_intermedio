@@ -28,7 +28,7 @@ MyVector<T>::MyVector(int s)
 
 //costruttore con inizializer list
 template<typename T>
-MyVector<T>::MyVector(std::initializer_list<double> lst)
+MyVector<T>::MyVector(std::initializer_list<T> lst)
 : sz{(int) lst.size()}, buffer_sz{(int) lst.size()}, elem{new T[buffer_sz]}
 {
     std::copy(lst.begin(), lst.end(), elem);

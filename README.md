@@ -5,7 +5,7 @@
 
 # Policy adottate
 
-- **Costruttori classe Misura: tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
+- **Costruttori classe Misura**: tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 
 # Attività individuali
 

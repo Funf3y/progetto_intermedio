@@ -10,7 +10,7 @@ class MyVector{
     //costruttore
     explicit MyVector(int s);
     //costruttore con initializer list
-    MyVector(std::initializer_list<double> lst);
+    MyVector(std::initializer_list<T> lst);
     //costruttore copia
     MyVector(const MyVector& a);
     //assegnamento copia

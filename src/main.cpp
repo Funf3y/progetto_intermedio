@@ -1,13 +1,15 @@
 #include <iostream>
 
-//#include "../include/my_vector.h"
+#include "../include/my_vector.h"
 #include "../include/inertial_driver.h"
-//#include "../include/misura.h"
-//#include "../include/lettura.h"
+#include "../include/misura.h"
+#include "../include/lettura.h"
 
 int main(){
 
     /*****TEST*****/
+
+    std::cout << "**************************************** TEST MISURA E LETTURA ****************************************" << std::endl;
 
     /*Costruttore di default delle misure*/
     //- Permette di testare:
@@ -42,7 +44,7 @@ int main(){
 
     std::initializer_list<Lettura> prove_initializer  = {l1, l2};
     Misura m_init_1 {prove_initializer};
-    std::cout << "STAMPA MISURA COSTRUTTORE L'INITIALIZER" << std::endl;
+    std::cout << "STAMPA COSTRUTTORE CON INITIALIZER" << std::endl;
     std::cout << m_init_1 << std::endl;
 
     std::cout << "-------------------------------------------------------------------------------------" << std::endl;
@@ -62,7 +64,7 @@ int main(){
     //Permette di testare:
     //- operator [] in lettura 
     //- operator << con lettura
-    std::cout << "Terza lettura in m1" << std::endl; 
+    std::cout << "LETTURA CON []" << std::endl; 
     Lettura l3 = m1[3];
     std::cout << l3;
     
@@ -72,7 +74,7 @@ int main(){
     //Permette di testare:
     //- operator [] in scrittura 
     //- operator << con misura
-    std::cout << "La quarta lettura in m1 viene scritta" << std::endl; 
+    std::cout << "LETTURA E SCRITTURA CON []" << std::endl; 
     Lettura l4; 
     l4.pitch_v = 27.27;
     l4.pitch_a = 27.27;
@@ -84,19 +86,7 @@ int main(){
     std::cout << m1 << std::endl;    
     std::cout << "-------------------------------------------------------------------------------------" << std::endl;
 
-    std::cout << "----------------------------TEST INERTIAL DRIVER-------------------------------------" << std::endl;
-    /*test del costruttore di defailt di initial driver*/
-    //Permette di testare:
-    //- Costruttore di default initial driver
-    InertialDriver inert_driver_0; 
-
-    /*test del push_back di inertial driver*/
-    //Permette di testare:
-    //- is_empty di inertrial driver 
-    //- increment di inertial driver
-    inert_driver_0.push_back(m1);
-
-    /*test di inizializzazione con initializer list di dimensione > 17*/
+    /*inizializzazione con initializer list di dimensione > 17*/
     //Permette di testare:
     //- Costruttore con initializer list
     //- operator[]
@@ -110,10 +100,16 @@ int main(){
         std::cout << "La inizializer list fornita ha troppi elementi" << std::endl; 
     }
 
-    std::cout << "-------------------------------------------------------------------------------------" << std::endl;
-    std::cout << "----------------------------TEST INERTIAL DRIVER-------------------------------------" << std::endl;
+/*    std::cout << "**************************************** TEST INERTIAL DRIVER ****************************************" << std::endl;
+    /*test del costruttore di defailt di initial driver*/
+    //Permette di testare:
+    //- Costruttore di default initial driver
+    //InertialDriver inert_driver_0; 
 
-
-
+    /*test del push_back di inertial driver*/
+    //Permette di testare:
+    //- is_empty di inertrial driver 
+    //- increment di inertial driver
+    /*inert_driver_0.push_back(m1);*/
 
 }

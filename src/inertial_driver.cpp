@@ -29,12 +29,12 @@ bool InertialDriver::is_full(){
 //incrementa un indice (front o back) di uno 
 //se raggiunge la fine dello "spazio" ri-inizia il giro 
 int InertialDriver::increment(int index){
-    return(index +1)%BUFFER_DIM;
+    return (index +1)%BUFFER_DIM;
 }
 
 //push_back
 //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
-void InertialDriver::push_back(Misura m){
+/*void InertialDriver::push_back(Misura m){
     
     //per debug --> poi si può togliere 
     if(is_empty()){
@@ -51,7 +51,7 @@ void InertialDriver::push_back(Misura m){
         //non saprei come scrivere 
 
     }
-}
+}*/
 
 //pop_front
 //fornisce in output un array stile C contenente la misura più vecchia e la rimuove dal buffer
@@ -69,6 +69,6 @@ void InertialDriver::clear_buffer(){
 
 //get_reading
 //accetta un numero tra 0 e 16 e ritorna la corrispondente lettura della misura più recente, senza cancellarla dal buffer
-Lettura get_reading(int index){
+/*Lettura get_reading(int index){
     
-}
+}*/
