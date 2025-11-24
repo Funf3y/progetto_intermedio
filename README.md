@@ -81,7 +81,3 @@ Sara Z.
 - Test sul main del costruttore di default di Inertial Driver 
 - Correzione gestione del buffer circolare 
 - Test della sovrascrittura della lettura meno recente in buffer (caso di overflow)
-
-%%# TODO
-
-- Fare in modo che BUFFER_DIM rappresenti effettivamente il numero di misure contenibili, non la dimensione del buffer%%
