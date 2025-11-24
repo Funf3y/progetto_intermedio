@@ -11,7 +11,7 @@ class MyVector{
     //costruttore di default
     explicit MyVector();
 
-    //costruttore
+    //costruttore con parametro
     explicit MyVector(int s);
 
     //costruttore con initializer list

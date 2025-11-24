@@ -8,16 +8,16 @@
 class Misura{
     public:
 
-    //per poter lanciare errori
+    //Classe creata per riportare errori
     class Invalid {};
 
-    //costruttori
-
+    //costruttore di default
     Misura();
 
+    //costruttore con initializer list
     Misura(std::initializer_list<Lettura> lst);
 
-    //conversione da array di int a Misura
+    //conversione da array di Lettura a Misura
     Misura(Lettura* m);
 
     //costruttore copia
@@ -32,11 +32,11 @@ class Misura{
     //assegnamento move
     Misura& operator=(Misura&& m);
 
-    //l'operator[] emula il comportamento degli array stile C
-    Lettura& operator[](int n);
-    const Lettura& operator[] (int n) const;
+    //l'operator[] emula il comportamento degli array stile C (con vontrollo sull'indice)
+    Lettura& operator[](int index);
+    const Lettura& operator[] (int index) const;
 
-    //il metodo aiuta ad evitare magic numbers (size è costante e non scelta dall'utente)
+    //permette di evitare magic numbers (size è costante e non scelta dall'utente)
     int size() const { return NUM_LETTURE; }
 
     private:
@@ -47,7 +47,7 @@ class Misura{
 //operator<< per Misura
 std::ostream& operator<<(std::ostream& os, Misura m);
 
-//operator <<  per Lettura
+//operator<<  per Lettura
 std::ostream& operator<<(std::ostream& os, Lettura l);
 
 #endif //Misura_h

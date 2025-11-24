@@ -6,10 +6,10 @@
 
 # Policy adottate
 
-- **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 - **Costruttori classe Inertial Driver**: Se non viene fornito alcun parametro, la dimensione di default sarà 20. Se fornito un valore intero, verrà usato come dimensione del buffer da creare.
+- **Copia di Inertial Driver**: Permessa solo se l'Inertial Driver in cui si copia è abbastanza grande per contenere tutti gli elementi da copiare; altrimenti si verifica un errore. Le misure vengono copiate a partire dal primo slot del nouovo buffer. 
+- **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 - **Conversione da array stile C di Letture a Misura**: Se fornito un array stile C di Letture di dimensione >= 17, allora i primi 17 elementi verranno usati per costruire la misura; se fornito un array di dimensione insufficiente, i valori mancanti saranno garbage. 
-- **Copia di Inertial Driver**: Permessa solo se l'Inertial Driver in cui si copia è abbastanza grande per contenere tutti gli elementi da copiare; altrimenti si verifica un errore.
 
 # Attività individuali
 
@@ -79,4 +79,7 @@ Sara Z.
 
 # TODO
 
+- Fare in modo che BUFFER_DIM rappresenti effettivamente il numero di misure contenibili, non la dimensione del buffer
+- pop_front(): quando si richiede un array stile C, la conversione funziona, ma quando lo si restituisce? Guarda forum.
+- Giustifica mancato aggiornamento di attributi MyVector
 - CONFRONTARE CODICE CON SPECIFICHE E CONVENZIONI (SLIDE) PER VEDERE SE E' TUTTO OK E CONSEGNABILE

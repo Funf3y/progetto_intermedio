@@ -10,7 +10,7 @@
 class InertialDriver{
     public:
 
-    /*Classe creata per ...*/
+    //Classe creata per riportare errori
     class Invalid {};
 
     /*COSTRUTTORI*/
@@ -27,65 +27,66 @@ class InertialDriver{
     InertialDriver(const InertialDriver& indr);
 
     //assegnamento copia
-    //copia tutte le misure di un Inertial Driver su un altro, se lo spazio non è sufficiente: errore
+    //copia tutte le misure di un Inertial Driver su un altro (a partire dal primo slot del nuovo buffer), 
+    //se lo spazio non è sufficiente: errore
     InertialDriver& operator=(const InertialDriver& indr);
+
+    //vieto esplicitamente operazioni move
+    InertialDriver(InertialDriver&& indr) = delete;
+
+    InertialDriver& operator=(InertialDriver&& indr) = delete;
 
     //non serve scrivere il distruttore perché viene chiamato in automatico il distruttore di MyVector, che si occupa di liberare la memoria del buffer
     
-    /*funzioni per accedere all'interfaccia*/
+    /*FUNZIONI DI ACCESSO ALL'OGGETTO (secondo le modalità specificate)*/
     
-    //push_back
     //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
     void push_back(Misura m);
 
-    //pop_front
     //fornisce in output un array stile C contenente la misura più vecchia e la rimuove dal buffer
+    //(TODO: quando si richiede un array stile C, la conversione funziona, ma quando lo si restituisce? Guarda forum)
     Misura pop_front();
 
-    //clear_buffer
     //elimina (senza restituirle) tutte le misure salvate
     void clear_buffer();
 
-    //get_reading
     //accetta un numero tra 0 e 16 e ritorna la corrispondente lettura della misura più recente, senza cancellarla dal buffer
     Lettura get_reading(int index);
 
-    /*funzioni che rappresentano lo stato del buffer*/
+    /*RAPPRESENTAZIONI STATO DELL'OGGETTO*/
 
     //verifica se il buffer è vuoto
     bool is_empty(); 
 
-    //verifica se il buffer è pieno => devo iniziare a sovrascrivere 
+    //verifica se il buffer è pieno
     bool is_full();
 
-    int size();
+    //restituisce il numero di elementi
+    int size() const;
 
-    /*getter*/
+    //restituisce l'ultima misura inserita, senza permettere di modificarla
     const Misura& get_back();
 
+    //stampa tutte le misure inserite nel buffer, nell'ordine di inserimento
     void print_all_buffer();
 
+
     private:
-    //dati membro
+
     MyVector buffer; //buffer di misure
-    const int BUFFER_DIM; //dimensione scelta arbitrariamente (per ora 3 per fare test, poi TODO cambia il numero)
+    const int BUFFER_DIM; //numero massimo di misure contenibili nel buffer
     int front; //indice dell'elemento più vecchio presente nel buffer
     int back; //indice dell'elemento più nuovo presente nel buffer
     
 
 };
 
-//operator<<
+/*FUNZIONI HELPER*/
+
 //stampa a schermo l’ultima misura salvata (ma non la rimuove dal buffer)
 std::ostream& operator<<(std::ostream& os, InertialDriver indr);
 
-/*FUNZIONI HELPER*/
-
-//incrementa gli indici 
+//incrementa l'indice fornito in base alla dimensione del buffer fornita 
 int increment(int index, int buffer_dim);
-
-//stampa l'intero buffer
-//TODO: se avanza tempo
-//void stampa(InertialDriver indr);
 
 #endif //InertialDriver_h
