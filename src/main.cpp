@@ -9,9 +9,9 @@ int main(){
 
     /*****TEST*****/
 
-    std::cout << "1: per Misura e Lettura;\n2: per Inertial Driver;\n3: per conversione da array;\n9: per tutti i test.\n0: per terminare." <<std::endl;
     int scelta {9};
     while(scelta != 0){
+        std::cout << "1: per Misura e Lettura;\n2: per Inertial Driver;\n3: per conversione da array;\n9: per tutti i test.\n0: per terminare." <<std::endl;
         std::cin >> scelta;
 
         if(scelta == 1 || scelta == 9){
@@ -106,6 +106,8 @@ int main(){
             }catch(Misura::Invalid){
                 std::cout << "La inizializer list fornita ha troppi elementi" << std::endl; 
             }
+
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
         }
         if (scelta == 2 || scelta == 9){
             std::cout << "\n**************************************** TEST INERTIAL DRIVER ****************************************\n" << std::endl;
@@ -282,6 +284,8 @@ int main(){
             InertialDriver indr {5};
             indr.push_back(m);
             std::cout << "STAMPA INERTIAL DRIVER DOPO INSERIMENTO DI ARRAY STILE C DI LETTURE (non di Misura)\n" << m << std::endl;
+
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
         }
     }
     
