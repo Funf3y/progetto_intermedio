@@ -12,18 +12,24 @@ class InertialDriver{
 
     class Invalid {};
 
+    /*COSTRUTTORI*/
+
     //costruttore di default
     //di default la dimensione viene scelta dal programmatore
-    //TODO: non va
     InertialDriver();
 
     //costruttore con parametri
     //dimensione del buffer decisa dall'utente
     explicit InertialDriver(int buffer_dim);
 
+    //costruttore copia
+    InertialDriver(const InertialDriver& indr);
 
-    //distruttore
-    ~InertialDriver();
+    //assegnamento copia
+    //copia tutte le misure di un Inertial Driver su un altro, se lo spazio non è sufficiente: errore
+    InertialDriver& operator=(const InertialDriver& indr);
+
+    //non serve scrivere il distruttore perché viene chiamato in automatico il distruttore di MyVector, che si occupa di liberare la memoria del buffer
     
     /*funzioni per accedere all'interfaccia*/
     
@@ -54,14 +60,16 @@ class InertialDriver{
     int size();
 
     /*getter*/
-    Misura get_back();
+    const Misura& get_back();
+
+    void print_all_buffer();
 
     private:
     //dati membro
     MyVector buffer; //buffer di misure
-    const int BUFFER_DIM {3}; //dimensione scelta arbitrariamente (per ora 3 per fare test, poi TODO cambia il numero)
-    int front {0}; //indice dell'elemento più vecchio presente nel buffer
-    int back {0}; //indice dell'elemento più nuovo presente nel buffer
+    const int BUFFER_DIM; //dimensione scelta arbitrariamente (per ora 3 per fare test, poi TODO cambia il numero)
+    int front; //indice dell'elemento più vecchio presente nel buffer
+    int back; //indice dell'elemento più nuovo presente nel buffer
     
 
 };

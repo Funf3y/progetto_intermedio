@@ -9,6 +9,7 @@
 - **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 - **Costruttori classe Inertial Driver**: Se non viene fornito alcun parametro, la dimensione di default sarà 20. Se fornito un valore intero, verrà usato come dimensione del buffer da creare.
 - **Conversione da array stile C di Letture a Misura**: Se fornito un array stile C di Letture di dimensione >= 17, allora i primi 17 elementi verranno usati per costruire la misura; se fornito un array di dimensione insufficiente, i valori mancanti saranno garbage. 
+- **Copia di Inertial Driver**: Permessa solo se l'Inertial Driver in cui si copia è abbastanza grande per contenere tutti gli elementi da copiare; altrimenti si verifica un errore.
 
 # Attività individuali
 
@@ -17,6 +18,11 @@ Giulia B.
 - Implementati operatori di accesso per lettura e scrittura (misura.cpp)
 - Implementata funzione clear_buffer
 - Costruttore di default di inertial_driver
+- Test di get_reading
+- correzione gestione del buffer circolare 
+- test della sovrascrittura della lettura meno recente in buffer (caso di overflow)
+
+
 
 🗝️☁️
 - Aggiunto MyVector dal lab04
@@ -43,7 +49,10 @@ Giulia B.
 - getReader() in Inertial driver
 - Conversione da array (stile C) di Lettura a Misura
 - Test conversione da array di Lettura a Misura
-
+- Sistemanto costruttore di default (Inertial Driver)
+- Copia (Inertial Driver)
+- correzione gestione del buffer circolare 
+- test della sovrascrittura della lettura meno recente in buffer (caso di overflow)
 
 Sara Z.
 - creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)
@@ -62,13 +71,13 @@ Sara Z.
 - size() (InertialDriver)
 - Correzione gestione indici buffer circolare
 - getReader() in Inertial Driver
+- correzione costruttore di default di inertial driver
+- test costruttore di default di inertial driver 
+- correzione gestione del buffer circolare 
+- test della sovrascrittura della lettura meno recente in buffer (caso di overflow)
 
 # TODO
 
-- Sistemare costruttore di default di Inertial Driver
-- Copia e move Inertial Driver
-- Distruttore di Inertial Driver
-- TEST DI GETREADER (poi il resto delle funzioni di inertial driver)
 - Test delle varie eccezioni lanciate (es. [] con indice fuori dal range)
 - Test delle funzioni Inerial Driver
 - Sistemare alcuni commenti per le funzioni di inertial driver --> Zane: "ho scritto in velocità intanto per farvi capire cosa volevo fare"
@@ -77,7 +86,6 @@ Sara Z.
     - Sistemare stampa delle spiegazioni dei test sul main
     - CONFRONTARE CODICE CON SPECIFICHE E CONVENZIONI (SLIDE) PER VEDERE SE E' TUTTO OK E CONSEGNABILE
 
-
 # Problemi riscontrati e non risolti
 
-- Costruttore di default di Inertial Driver inizializza con un buffer vuoto (invece della dimensione arbitraria decisa da noi)
+- Alla fine dell'esecuzione vengono stampati i messaggi "double free or corruption (!prev)" e "Annullato (core dump creato)"

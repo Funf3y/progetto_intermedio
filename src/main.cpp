@@ -112,28 +112,31 @@ int main(){
         std::cout << "\n**************************************** TEST INERTIAL DRIVER ****************************************\n" << std::endl;
         
         Lettura l1; 
-        l1.pitch_v = 12.4;
-        l1.pitch_a = 78;
-        l1.roll_v = 0.7; 
-        l1.roll_a = 90; 
-        l1.yaw_v = 12.0;
-        l1.yaw_a = 20;
+        l1.pitch_v = 1;
+        l1.pitch_a = 1;
+        l1.roll_v = 1; 
+        l1.roll_a = 1; 
+        l1.yaw_v = 1;
+        l1.yaw_a = 1;
 
         Lettura l2; 
-        l2.pitch_v = 62.4;
-        l2.pitch_a = 89;
-        l2.roll_v = 34.7; 
-        l2.roll_a = 65; 
-        l2.yaw_v = 1.8;
-        l2.yaw_a = 76.2;
+        l2.pitch_v = 2;
+        l2.pitch_a = 2;
+        l2.roll_v = 2; 
+        l2.roll_a = 2; 
+        l2.yaw_v = 2;
+        l2.yaw_a = 2;
 
-        Misura m1 = {l1, l2};
+        Misura m; 
+        Misura m1 = {l1, l1};
+        Misura m2 = {l2, l2, l2, l2}; 
+
+        std::cout << "--OPERAZIONI CON INERTIAL DRIVER: costruttore di default" << std::endl;
         /*test del costruttore di defailt di initial driver*/
         //Permette di testare:
         //- Costruttore di default initial driver
-        InertialDriver inert_driver_0; 
 
-        InertialDriver inert_driver_1 {5};
+        InertialDriver inert_driver_1; 
 
         /*test del push_back di inertial driver*/
         //Permette di testare:
@@ -143,6 +146,36 @@ int main(){
         inert_driver_1.push_back(m1);
         std::cout << "PUSH BACK DI INERTIAL DRIVER" << std::endl;
         std::cout << "Stampa elemento appena inserito:" << std::endl << inert_driver_1 << std::endl;
+
+      
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+
+        std::cout << "--OPERAZIONI CON INERTIAL DRIVER: costruttore con dimensione scelta" << std::endl;
+        /*test del costruttore con buffer di dimensione decisa dal'utente di initial driver*/
+        //Permette di testare:
+        //- Costruttore con argomento la dimensione del buffer
+        InertialDriver inert_driver_2 {3};
+        
+        
+        /*test del push_back di inertial driver*/
+        //Permette di testare:
+        //- is_full di inertrial driver
+        //- increment di inertial driver
+        //- operator<<
+
+        /*
+        inert_driver_2.push_back(m2);
+        std::cout << "PUSH BACK DI INERTIAL DRIVER" << std::endl;
+        std::cout << "Stampa elemento appena inserito:" << std::endl << inert_driver_2 << std::endl;
+        */
+
+        /*test del get_reading di inertial driver*/
+        /*
+        std::cout << "GET READING DI INERTIAL DRIVER" << std::endl;
+        std::cout << "Stampa prima lettura della misura appena inserita:" << std::endl;
+        std::cout << inert_driver_2.get_reading(0) << std::endl;
+        */
 
         std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
@@ -154,9 +187,72 @@ int main(){
         //- operator[] (myVector)
         //- lancio eccezione Invalid
         //- stampa di misura
-        //Misura mis_rimossa = inert_driver_1.pop_front();
-        std::cout << "Stampa elemento appena rimosso:" << std::endl << inert_driver_1.pop_front() << std::endl;
+        //Misura mis_rimossa = inert_driver_2.pop_front();
+        
+        std::cout << "Stampa elemento appena rimosso:" << std::endl << inert_driver_2.pop_front() << std::endl;
+        std::cout << "quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
+        try{
+            //std::cout << "TEST eccezione per getReading di una lettura da Inertial driver vuoto" << std::endl; 
+            //std::cout << "Stampa la prima lettura  di inertial_driver_1" << std::endl;
+            //std::cout << inert_driver_1.get_reading(0) << std::endl;
+            
+
+        }catch(InertialDriver::Invalid){
+            std::cout << "buffer vuoto"; 
+
         }
+    
+        //POPOLO inertial_driver_1
+        //TEST sulla corretta sovrascrittura della prima misura e push back
+        inert_driver_2.push_back(m);
+        inert_driver_2.print_all_buffer();
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+        inert_driver_2.push_back(m1);
+        inert_driver_2.print_all_buffer();
+
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+        inert_driver_2.push_back(m2);
+        inert_driver_2.print_all_buffer();
+
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+        inert_driver_2.push_back(m2);
+        inert_driver_2.print_all_buffer();
+        
+        std::cout << "quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
+
+
+
+        std::cout << "Stampa prima lettura di inertial_driver_2" << std::endl;
+        std::cout << inert_driver_2.get_reading(0) << std::endl;
+
+
+        std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+        std::cout << "TEST della copia: inertial driver 1 = inertial driver 2" << std::endl;
+        inert_driver_1 = inert_driver_2;
+        inert_driver_1.print_all_buffer();
+
+
+        std::cout << "Stampa prima lettura di inertial_driver_1" << std::endl;
+        std::cout << inert_driver_1.get_reading(0) << std::endl;
+
+
+        try{
+            //std::cout << "TEST eccezione per getReading di una lettura fuori dal range" << std::endl; 
+            //std::cout << "Stampa la lettura 18 di inertial_driver_1" << std::endl;
+            //std::cout << inert_driver_1.get_reading(18) << std::endl;
+            
+
+        }catch(InertialDriver::Invalid){
+            std::cout << "out of range"; 
+        }
+        
+
+
+
+    }
     else if(scelta == 2){
         Lettura l1; 
         l1.pitch_v = 12.4;
