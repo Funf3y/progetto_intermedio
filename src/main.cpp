@@ -130,119 +130,125 @@ int main(){
             Misura m1 = {l1, l1};
             Misura m2 = {l2, l2, l2, l2}; 
 
-            std::cout << "--OPERAZIONI CON INERTIAL DRIVER: costruttore di default" << std::endl;
-            /*test del costruttore di defailt di initial driver*/
-            //Permette di testare:
-            //- Costruttore di default initial driver
-
+            /*Costruttore di default*/
+            //- Permette di testare:
+            //- Costruttore di default
+            //- size()
+            std::cout << "STAMPA COSTRUTTORE DEFAULT" << std::endl;
             InertialDriver inert_driver_1; 
+            std::cout << "Dimensione con construttore di default (0 perché nessun elemento è stato inserito): " << inert_driver_1.size() << std::endl;
+
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
             /*test del push_back di inertial driver*/
             //Permette di testare:
+            //- push_back
             //- is_full di inertrial driver
             //- increment di inertial driver
             //- operator<<
             inert_driver_1.push_back(m1);
-            std::cout << "PUSH BACK DI INERTIAL DRIVER" << std::endl;
+            std::cout << "PUSH BACK" << std::endl;
             std::cout << "Stampa elemento appena inserito:" << std::endl << inert_driver_1 << std::endl;
 
-        
             std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
-
-            std::cout << "OPERAZIONI CON INERTIAL DRIVER: costruttore con dimensione scelta" << std::endl;
             /*test del costruttore con buffer di dimensione decisa dal'utente di initial driver*/
             //Permette di testare:
             //- Costruttore con argomento la dimensione del buffer
             InertialDriver inert_driver_2 {3};
+            std::cout << "STAMPA COSTRUTTORE CON PARAMETRO" << std::endl;
+            std::cout << "Dimensione con construttore di default (0 perché nessun elemento è stato inserito): " << inert_driver_2.size() << std::endl;
 
-            /*
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+            
+            //Popolo inert_driver_2
+            inert_driver_2.push_back(m);
+            inert_driver_2.push_back(m1);
             inert_driver_2.push_back(m2);
-            std::cout << "PUSH BACK DI INERTIAL DRIVER" << std::endl;
-            std::cout << "Stampa elemento appena inserito:" << std::endl << inert_driver_2 << std::endl;
-            */
+            inert_driver_2.push_back(m2);
 
             /*test del get_reading di inertial driver*/
-            /*
+            //Permette di testare:
+            //- is_empty()
             std::cout << "GET READING DI INERTIAL DRIVER" << std::endl;
-            std::cout << "Stampa prima lettura della misura appena inserita:" << std::endl;
-            std::cout << inert_driver_2.get_reading(0) << std::endl;
-            */
+            std::cout << "Stampa prima lettura della misura appena inserita:" << inert_driver_2.get_reading(0) << std::endl;
+            
 
             std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
             /*test pop_front*/
             //Permette di testare:
             //- pop_front
-            //- is_empty
             //- increment
             //- operator[] (myVector)
-            //- lancio eccezione Invalid
             //- stampa di misura
-            //Misura mis_rimossa = inert_driver_2.pop_front();
+            Misura mis_rimossa = inert_driver_2.pop_front();
+
+            std::cout << "GET READING DI INERTIAL DRIVER" << std::endl;
             
-            //std::cout << "Stampa elemento appena rimosso:" << std::endl << inert_driver_2.pop_front() << std::endl;
-            //std::cout << "quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
+            std::cout << "Stampa elemento appena rimosso:" << std::endl << mis_rimossa << std::endl;
+            std::cout << "Quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
+
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
+            std::cout << "CLEAR BUFFER" << std::endl;
+            inert_driver_2.clear_buffer();
+            std::cout << "Quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl; 
+
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+
             try{
-                //std::cout << "TEST eccezione per getReading di una lettura da Inertial driver vuoto" << std::endl; 
-                //std::cout << "Stampa la prima lettura  di inertial_driver_1" << std::endl;
-                //std::cout << inert_driver_1.get_reading(0) << std::endl;
-                
+
+                /*test pop_front*/
+                //-Permette di testare:
+                //- is_empty
+                //- lancio eccezione invalid
+                std::cout << "GET READING SU INERTIAL DRIVER VUOTO (test eccezione)" << std::endl;
+                std::cout << "Se Inertial Driver non fosse vuoto stamperei una Lettura:" << inert_driver_1.get_reading(0) << std::endl;
+
+                std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
             }catch(InertialDriver::Invalid){
-                std::cout << "buffer vuoto"; 
-
+                std::cout << "L'Inertial Driver fornito è vuoto"; 
+                std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
             }
         
             //POPOLO inertial_driver_1
             //TEST sulla corretta sovrascrittura della prima misura e push back
+
+            std::cout << "Stampa di tutto il buffer dopo ogni push_back, per quattro push back (buffer di size 3)" << std::endl;
+
             inert_driver_2.push_back(m);
             inert_driver_2.print_all_buffer();
-            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
-
+            
             inert_driver_2.push_back(m1);
             inert_driver_2.print_all_buffer();
 
-            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
-
             inert_driver_2.push_back(m2);
             inert_driver_2.print_all_buffer();
-
-            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
             inert_driver_2.push_back(m2);
             inert_driver_2.print_all_buffer();
             
-            std::cout << "quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
-
-
-
-            std::cout << "Stampa prima lettura di inertial_driver_2" << std::endl;
-            std::cout << inert_driver_2.get_reading(0) << std::endl;
-
+            std::cout << "Elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
 
             std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
-            std::cout << "TEST della copia: inertial driver 1 = inertial driver 2" << std::endl;
+            
+            /*test assegnamento copia*/
+            std::cout << "ASSEGNAMENTO COPIA" << std::endl;
             inert_driver_1 = inert_driver_2;
+            std::cout << "Stampa primo Inertial Driver, nel quale è stato copiato il secondo" << std::endl;
             inert_driver_1.print_all_buffer();
 
-
-            std::cout << "Stampa prima lettura di inertial_driver_1" << std::endl;
-            std::cout << inert_driver_1.get_reading(0) << std::endl;
-
-
-            try{
-                //std::cout << "TEST eccezione per getReading di una lettura fuori dal range" << std::endl; 
-                //std::cout << "Stampa la lettura 18 di inertial_driver_1" << std::endl;
-                //std::cout << inert_driver_1.get_reading(18) << std::endl;
-                
-
-            }catch(InertialDriver::Invalid){
-                std::cout << "out of range"; 
-            }
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
             
+            /*test costruttore copia*/
+            std::cout << "COSTRUTTORE COPIA" << std::endl;
+            InertialDriver inert_driver_3 = inert_driver_2;
+            std::cout << "Stampa Inertial Driver creato usando costruttore copia" << std::endl;
+            inert_driver_3.print_all_buffer();
 
-
+            std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
         }
         if(scelta == 3 || scelta == 9){

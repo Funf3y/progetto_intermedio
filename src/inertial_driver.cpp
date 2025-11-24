@@ -59,6 +59,10 @@ InertialDriver& InertialDriver::operator=(const InertialDriver& indr){
 /*FUNZIONI DI ACCESSO ALL'OGGETTO (secondo le modalità specificate)*/
 
 //accetta un array stile C contenente una misura e la memorizza nel buffer (sovrascrivendo la misura meno recente se il buffer è pieno)
+//policy: scegliamo di non aggiornare sz (size del buffer, che è oggetto MyVector) per le seguenti ragioni:
+//- ridefiniamo la size del buffer tramite la funzione InertialDriver::size() come il numero di elementi correntemente presenti nel buffer
+//- InertialDriver::size() utilizza solamente front, back e BUFFER_DIM per calcolare il numero di elementi presenti nel buffer
+//- all'utente non è possibile accedere al dato membro buffer, quindi non potrebbe chiamare MyVector::size()
 void InertialDriver::push_back(Misura m){
     if(is_full()){
         buffer[back] = m; //sovrascrittura del front (misura più vecchia)

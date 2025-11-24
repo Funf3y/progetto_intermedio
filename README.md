@@ -10,6 +10,10 @@
 - **Copia di Inertial Driver**: Permessa solo se l'Inertial Driver in cui si copia è abbastanza grande per contenere tutti gli elementi da copiare; altrimenti si verifica un errore. Le misure vengono copiate a partire dal primo slot del nouovo buffer. 
 - **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 - **Conversione da array stile C di Letture a Misura**: Se fornito un array stile C di Letture di dimensione >= 17, allora i primi 17 elementi verranno usati per costruire la misura; se fornito un array di dimensione insufficiente, i valori mancanti saranno garbage. 
+- **Aggiornamento di sz** (dato membro di MyVector): scegliamo di non aggiornare sz (size del buffer, che è oggetto MyVector) per le seguenti ragioni:
+    - ridefiniamo la size del buffer tramite la funzione InertialDriver::size() come il numero di elementi correntemente presenti nel buffer
+    - InertialDriver::size() utilizza solamente front, back e BUFFER_DIM per calcolare il numero di elementi presenti nel buffer
+    - all'utente non è possibile accedere al dato membro buffer, quindi non potrebbe chiamare MyVector::size()
 
 # Attività individuali
 
@@ -54,6 +58,7 @@ Giulia B.
 - Correzione gestione del buffer circolare 
 - Test sul main della sovrascrittura della lettura meno recente in buffer (caso di overflow)
 - Controllo correttezza convenzioni
+- Blocco esplicito di move (InertialDriver)
 
 Sara Z.
 - Creazione struct Lettura
@@ -81,5 +86,3 @@ Sara Z.
 
 - Fare in modo che BUFFER_DIM rappresenti effettivamente il numero di misure contenibili, non la dimensione del buffer
 - pop_front(): quando si richiede un array stile C, la conversione funziona, ma quando lo si restituisce? Guarda forum.
-- Giustifica mancato aggiornamento di attributi MyVector
-- CONFRONTARE CODICE CON SPECIFICHE E CONVENZIONI (SLIDE) PER VEDERE SE E' TUTTO OK E CONSEGNABILE

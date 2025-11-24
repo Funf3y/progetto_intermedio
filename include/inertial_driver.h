@@ -44,7 +44,6 @@ class InertialDriver{
     void push_back(Misura m);
 
     //fornisce in output un array stile C contenente la misura più vecchia e la rimuove dal buffer
-    //(TODO: quando si richiede un array stile C, la conversione funziona, ma quando lo si restituisce? Guarda forum)
     Misura pop_front();
 
     //elimina (senza restituirle) tutte le misure salvate
