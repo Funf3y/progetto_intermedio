@@ -7,7 +7,7 @@
 # Policy adottate
 
 - **Costruttori classe Inertial Driver**: Se non viene fornito alcun parametro, la dimensione di default sarà 20. Se fornito un valore intero, verrà usato come dimensione del buffer da creare.
-- **Copia di Inertial Driver**: Permessa solo se l'Inertial Driver in cui si copia è abbastanza grande per contenere tutti gli elementi da copiare; altrimenti si verifica un errore. Le misure vengono copiate a partire dal primo slot del nouovo buffer. 
+- **Copia di Inertial Driver**: Permessa solo se l'Inertial Driver in cui si copia è abbastanza grande per contenere tutti gli elementi da copiare; altrimenti si verifica un errore. Le misure vengono copiate a partire dal primo slot del nuovo buffer. 
 - **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 - **Conversione da array stile C di Letture a Misura**: Se fornito un array stile C di Letture di dimensione >= 17, allora i primi 17 elementi verranno usati per costruire la misura; se fornito un array di dimensione insufficiente, i valori mancanti saranno garbage. 
 - **Aggiornamento di sz** (dato membro di MyVector): scegliamo di non aggiornare sz (size del buffer, che è oggetto MyVector) per le seguenti ragioni:
@@ -50,7 +50,7 @@ Giulia B.
 - operator << (Inertial driver)
 - Funzione get_back() (InertialDriver)
 - Correzione gestione indici buffer circolare
-- getReader() (Inertial driver)
+- Funzione get_reader() (Inertial driver)
 - Conversione da array (stile C) di Lettura a Misura
 - Test sul main conversione da array di Lettura a Misura
 - Sistemanto costruttore di default (Inertial Driver)
@@ -78,11 +78,10 @@ Sara Z.
 - Correzione gestione indici buffer circolare
 - Funzione get_reader() (Inertial Driver)
 - Correzione costruttore di default (Inertial Driver)
-- Test sul main dek costruttore di default di Inertial Driver 
+- Test sul main del costruttore di default di Inertial Driver 
 - Correzione gestione del buffer circolare 
 - Test della sovrascrittura della lettura meno recente in buffer (caso di overflow)
 
-# TODO
+%%# TODO
 
-- Fare in modo che BUFFER_DIM rappresenti effettivamente il numero di misure contenibili, non la dimensione del buffer
-- pop_front(): quando si richiede un array stile C, la conversione funziona, ma quando lo si restituisce? Guarda forum.
+- Fare in modo che BUFFER_DIM rappresenti effettivamente il numero di misure contenibili, non la dimensione del buffer%%
