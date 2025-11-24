@@ -10,6 +10,7 @@
 class InertialDriver{
     public:
 
+    /*Classe creata per ...*/
     class Invalid {};
 
     /*COSTRUTTORI*/

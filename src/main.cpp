@@ -151,18 +151,11 @@ int main(){
         std::cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
 
-        std::cout << "--OPERAZIONI CON INERTIAL DRIVER: costruttore con dimensione scelta" << std::endl;
+        std::cout << "OPERAZIONI CON INERTIAL DRIVER: costruttore con dimensione scelta" << std::endl;
         /*test del costruttore con buffer di dimensione decisa dal'utente di initial driver*/
         //Permette di testare:
         //- Costruttore con argomento la dimensione del buffer
         InertialDriver inert_driver_2 {3};
-        
-        
-        /*test del push_back di inertial driver*/
-        //Permette di testare:
-        //- is_full di inertrial driver
-        //- increment di inertial driver
-        //- operator<<
 
         /*
         inert_driver_2.push_back(m2);
@@ -189,8 +182,8 @@ int main(){
         //- stampa di misura
         //Misura mis_rimossa = inert_driver_2.pop_front();
         
-        std::cout << "Stampa elemento appena rimosso:" << std::endl << inert_driver_2.pop_front() << std::endl;
-        std::cout << "quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
+        //std::cout << "Stampa elemento appena rimosso:" << std::endl << inert_driver_2.pop_front() << std::endl;
+        //std::cout << "quanti elementi sono contenuti: " << inert_driver_2.size() << std::endl;  
         try{
             //std::cout << "TEST eccezione per getReading di una lettura da Inertial driver vuoto" << std::endl; 
             //std::cout << "Stampa la prima lettura  di inertial_driver_1" << std::endl;

@@ -13,7 +13,7 @@ InertialDriver::InertialDriver()
 
 //costruttore con dimensione del buffer scelta dall'utente 
 InertialDriver::InertialDriver(int buffer_dim)
-: BUFFER_DIM {buffer_dim + 1}, buffer(buffer_dim), front{0}, back{0} {} //il +1 è necessario per poter come abbiamo studiato e definito un array gestito con politica circolare
+: BUFFER_DIM {buffer_dim + 1}, buffer(buffer_dim + 1), front{0}, back{0} {} //il +1 è necessario per poter come abbiamo studiato e definito un array gestito con politica circolare
 
 //costruttore copia
 InertialDriver::InertialDriver(const InertialDriver& indr)
@@ -71,18 +71,6 @@ int InertialDriver::size(){
     }
     return (back-front);
 }
-
-//TODO: se avanza tempo, implementa per bene la stampa dell'intero buffer
-/*void stampa(InertialDriver indr){
-    if(back < front){
-
-    }
-    else{
-        for(int i = front; indr.size(); ++i){
-            std::cout << "";
-        }
-    }
-}*/
 
 //incrementa un indice (front o back) di uno 
 //se raggiunge la fine dello "spazio" ricomincia il giro 
