@@ -5,19 +5,27 @@
 
 class MyVector{
     public:
+
     class Invalid {};
+
     //costruttore di default
     explicit MyVector();
-    //costruttore
+
+    //costruttore con parametro
     explicit MyVector(int s);
+
     //costruttore con initializer list
     MyVector(std::initializer_list<Misura> lst);
+
     //costruttore copia
     MyVector(const MyVector& a);
+
     //assegnamento copia
     MyVector& operator=(const MyVector& a);
+
     //costruttore move
     MyVector(MyVector&& a);
+    
     //assegnamento move
     MyVector& operator=(MyVector&&);
     

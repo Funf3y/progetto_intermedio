@@ -1,19 +1,15 @@
-#ifndef vector_hpp
-#define vector_hpp
+#include "../include/my_vector.h"
 
 #include <iostream>
 #include <stdexcept>
 
-#include "../include/my_vector.h"
-
 constexpr int DEFAULT_SIZE{50};
 
 //costruttore di default
-
 MyVector::MyVector()
 :sz{0}, buffer_sz{DEFAULT_SIZE}, elem{new Misura[DEFAULT_SIZE]}{}
 
-//costruttore
+//costruttore con parametro
 MyVector::MyVector(int s)
 :sz{s}, buffer_sz{s}, elem{new Misura[buffer_sz]}
 {
@@ -133,5 +129,3 @@ void MyVector::reserve(int n){
     delete[] elem;
     elem = p;
 }
-
-#endif 

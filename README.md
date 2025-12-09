@@ -6,78 +6,78 @@
 
 # Policy adottate
 
-- **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 - **Costruttori classe Inertial Driver**: Se non viene fornito alcun parametro, la dimensione di default sarà 20. Se fornito un valore intero, verrà usato come dimensione del buffer da creare.
+- **Copia di Inertial Driver**: Permessa solo se l'Inertial Driver in cui si copia è abbastanza grande per contenere tutti gli elementi da copiare; altrimenti si verifica un errore. Le misure vengono copiate a partire dal primo slot del nuovo buffer. 
+- **Costruttori classe Misura**: Tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 - **Conversione da array stile C di Letture a Misura**: Se fornito un array stile C di Letture di dimensione >= 17, allora i primi 17 elementi verranno usati per costruire la misura; se fornito un array di dimensione insufficiente, i valori mancanti saranno garbage. 
+- **Aggiornamento di sz** (dato membro di MyVector): scegliamo di non aggiornare sz (size del buffer, che è oggetto MyVector) per le seguenti ragioni:
+    - ridefiniamo la size del buffer tramite la funzione InertialDriver::size() come il numero di elementi correntemente presenti nel buffer
+    - InertialDriver::size() utilizza solamente front, back e BUFFER_DIM per calcolare il numero di elementi presenti nel buffer
+    - all'utente non è possibile accedere al dato membro buffer, quindi non potrebbe chiamare MyVector::size()
 
 # Attività individuali
 
 Giulia B.
 - Check e condivisione teoria, supporto (iniziali problemi tecnici)
-- Implementati operatori di accesso per lettura e scrittura (misura.cpp)
-- Implementata funzione clear_buffer
-- Costruttore di default di inertial_driver
+- Implementati operatori di accesso per lettura e scrittura (Misura)
+- Implementata funzione clear_buffer (Inertial Driver)
+- Costruttore di default di (Inertial Driver)
+- Test sul main di get_reading
+- Correzione gestione del buffer circolare 
+- Test sul main della sovrascrittura della lettura meno recente in buffer (caso di overflow)
+- Controllo correttezza convenzioni
+
+
 
 🗝️☁️
-- Aggiunto MyVector dal lab04
+- Aggiunto MyVector
 - Improntata classe InertialDriver
 - Improntato main (verificato che includesse)
-- Interfaccia pubblica di InertialDriver (nel .h)
+- Interfaccia pubblica di InertialDriver
 - Completata interfaccia (in sincrono con le altre)
 - Aggiunti file MyVector con template
 - Gestione generale di commit e push
 - Tentata risoluzione con std::array
-- Iniziato tentativo di risoluzione con una classe addizionale (misura)
-- Rinominato file
+- Improntata classe Misura
 - Improntato costruttori
 - Copia (Misura)
 - operator<< (Misura)
 - Sistemazione coesione stile
-- Test sul main
+- Test sul main (Misura e Lettura)
 - Modificato file perché non usino più i template
 - Funzione size (Inertial Driver)
-- Scrittura del pop_front in inertial driver 
-- operator << per inertial driver 
-- getBack() (InertialDriver)
+- Scrittura pop_front (Inertial Driver )
+- operator << (Inertial driver)
+- Funzione get_back() (InertialDriver)
 - Correzione gestione indici buffer circolare
-- getReader() in Inertial driver
+- Funzione get_reader() (Inertial driver)
 - Conversione da array (stile C) di Lettura a Misura
-- Test conversione da array di Lettura a Misura
-
+- Test sul main conversione da array di Lettura a Misura
+- Sistemanto costruttore di default (Inertial Driver)
+- Copia (Inertial Driver)
+- Correzione gestione del buffer circolare 
+- Test sul main della sovrascrittura della lettura meno recente in buffer (caso di overflow)
+- Controllo correttezza convenzioni
+- Blocco esplicito di move (InertialDriver)
 
 Sara Z.
-- creazione della struct che rappresenta una lettura con le relative misure (tutte double, 2 per direzione --> v e a)
-- adattamento di MyVector alle nuove esigenze
-- test di scrittura e stampa componente della struct lettura
-- costruttore di default di Misura 
-- costruttore con initializer list di Misura 
-- test di misura 
-- test del costruttore di default di inertial_driver
-- correzione costruttore di default 
-- push_back() di inertial_driver 
-- aggiunta is_empty e is_full in inertial_driver
-- aggiunta di increment in inertial_driver
+- Creazione struct Lettura
+- Adattamento di MyVector alle nuove esigenze
+- Test sul main di scrittura e stampa componente di Lettura
+- Costruttore di default (Misura)
+- Costruttore con initializer list (Misura)
+- Test sul main (Misura e Lettura)
+- Test sul main del costruttore di default di Inertial Driver
+- Correzione costruttore di default (Inertial Driver)
+- Funzione push_back() (Inertial Driver)
+- Funzioni is_empty() e is_full() (Inertial Driver)
+- Funzione increment() (Inertial Driver)
 - Modificato file perché non usino più i template
-- scrittura del push_back in inertial driver
-- size() (InertialDriver)
+- Scrittura push_back() (Inertial Driver)
+- Funzione size() (InertialDriver)
 - Correzione gestione indici buffer circolare
-- getReader() in Inertial Driver
-
-# TODO
-
-- Sistemare costruttore di default di Inertial Driver
-- Copia e move Inertial Driver
-- Distruttore di Inertial Driver
-- TEST DI GETREADER (poi il resto delle funzioni di inertial driver)
-- Test delle varie eccezioni lanciate (es. [] con indice fuori dal range)
-- Test delle funzioni Inerial Driver
-- Sistemare alcuni commenti per le funzioni di inertial driver --> Zane: "ho scritto in velocità intanto per farvi capire cosa volevo fare"
-- ULTIME 
-    - SISTEMARE I COMMENTI 
-    - Sistemare stampa delle spiegazioni dei test sul main
-    - CONFRONTARE CODICE CON SPECIFICHE E CONVENZIONI (SLIDE) PER VEDERE SE E' TUTTO OK E CONSEGNABILE
-
-
-# Problemi riscontrati e non risolti
-
-- Costruttore di default di Inertial Driver inizializza con un buffer vuoto (invece della dimensione arbitraria decisa da noi)
+- Funzione get_reader() (Inertial Driver)
+- Correzione costruttore di default (Inertial Driver)
+- Test sul main del costruttore di default di Inertial Driver 
+- Correzione gestione del buffer circolare 
+- Test della sovrascrittura della lettura meno recente in buffer (caso di overflow)

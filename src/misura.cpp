@@ -1,15 +1,15 @@
+#include "../include/misura.h"
+
 #include <stdexcept>
 
-#include "../include/misura.h"
 #include "../include/lettura.h"
 
-/*costruttori*/
-//Policy: tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
+//policy: tutti i valori non forniti vengono assunti nulli. Se forniti valori extra, si verifica un errore.
 
 //costruttore di default
 Misura::Misura(){
     
-    //creo una lettura di default da assegnare a tutte le 17 letture per una misurazione 
+    //Lettura di default da assegnare a tutte le 17 letture della misurazione 
     Lettura l_default;
     l_default.pitch_v = 0;
     l_default.pitch_a = 0;
@@ -24,8 +24,7 @@ Misura::Misura(){
     }
 }
    
-//costruttore con initializer list 
-//si passano delle letture già prese  
+//costruttore con initializer list
 Misura::Misura(std::initializer_list<Lettura> lst){
     if(lst.size() > NUM_LETTURE){
         throw  Invalid(); //giustificato dalla policy
@@ -49,7 +48,8 @@ Misura::Misura(std::initializer_list<Lettura> lst){
     }
 }
 
-//costruttore per conversione da array di letture a Misura
+//conversione da array di Lettura a Misura
+//policy: vengono copiati solo i primi 17 elementi; in caso di elementi insufficienti i valori mancanti sarano garbage.
 Misura::Misura(Lettura* m){
     for(int i = 0; i < NUM_LETTURE; ++i){
         elem[i] = m[i];
@@ -87,30 +87,30 @@ Misura& Misura::operator=(Misura&& m){
     return *this;
 }
 
-//operatore di accesso per scrittura
-Lettura& Misura::operator[] (int n)
+//operatore[] di accesso per scrittura
+Lettura& Misura::operator[] (int index)
 {
-    if(n < 0 || n >= NUM_LETTURE)
+    if(index < 0 || index >= NUM_LETTURE)
     {
         throw std::out_of_range ("Misura fuori dal range (deve essere compresa tra 0 e 16)");
     }
-    return elem[n];  //ritorna un riferimento modificabile
+    return elem[index]; //ritorna un riferimento modificabile
 }
 
-//operatore di accesso per lettura
-const Lettura& Misura::operator[] (int n) const
+//operatore[] di accesso per lettura
+const Lettura& Misura::operator[] (int index) const
 {
-    if(n < 0 || n >= NUM_LETTURE)
+    if(index < 0 || index >= NUM_LETTURE)
     {
         throw std::out_of_range ("Misura fuori dal range (deve essere compresa tra 0 e 16)");
     }
-    return elem[n];    //ritorna un riferimento non modificabile
+    return elem[index]; //ritorna un riferimento non modificabile
 }
 
 std::ostream& operator<<(std::ostream& os, Lettura l){
-    os << "{yaw velocity: " << l.yaw_v << "; yaw acceleration: " << l.yaw_a << ";\t"
+    os << "(yaw velocity: " << l.yaw_v << "; yaw acceleration: " << l.yaw_a << ";\t"
        << "pitch velocity: " << l.pitch_v << "; pitch acceleration: " << l.pitch_a << ";\t"
-       << "roll velocity: " << l.roll_v << "; roll acceleration: " << l.roll_a << "}" << std::endl;
+       << "roll velocity: " << l.roll_v << "; roll acceleration: " << l.roll_a << ")" << std::endl;
     return os;
 }
 
